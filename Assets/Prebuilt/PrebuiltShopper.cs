@@ -12,7 +12,6 @@ public class PrebuiltShopper : MonoBehaviour
      wallet, a shopping bag, and eventually veggies.*/
     public float allowance = 0f;
     [HideInInspector] public TextMeshProUGUI allowanceText;
-    [HideInInspector] public Button shoppingBag;
     [HideInInspector] public List<PrebuiltVeggie> veggiesInBag;
     public GameObject checkoutPanel;
 
@@ -20,7 +19,6 @@ public class PrebuiltShopper : MonoBehaviour
         // NOTE: Be VERY careful with transform.Find(); it's very easy for bugs to happen here due to renaming or typos
         allowanceText = this.transform.Find("MoneyPurse").transform.Find("Allowance").GetComponent<TextMeshProUGUI>();
         allowanceText.SetText("$" + allowance.ToString("F2"));
-        shoppingBag = this.transform.Find("Inventory").GetComponent<Button>();
         veggiesInBag = new List<PrebuiltVeggie>();
     }
     public bool validatePurchase(PrebuiltVeggie v) {
@@ -49,16 +47,16 @@ public class PrebuiltShopper : MonoBehaviour
         }
         return false;
     }
-    public void viewInventory() {
+    public void checkout() {
         string inv = "";
+        float total = 0f;
         foreach (PrebuiltVeggie heldVeggie in veggiesInBag)
         {
-            inv = inv + heldVeggie.ToString() + "\t";
+            inv = inv + heldVeggie.ToString() + "\n";
+            total = total + (heldVeggie.price * heldVeggie.quantity);
         }
-        Debug.Log(inv);
-    }
-    public void checkout() {
         checkoutPanel.SetActive(true);
+        checkoutPanel.transform.Find("Receipt").Find("VeggieList").GetComponent<TextMeshProUGUI>().text = inv + "\nTotal: $" + total.ToString("F2");
         Time.timeScale = 0f;
     }
     public void shopAgain() {

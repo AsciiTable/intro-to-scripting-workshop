@@ -39,7 +39,7 @@ public class PrebuiltVeggieStandItem : MonoBehaviour
         { // or !soldOut
             veggie.quantity = veggie.quantity - 1;
             QuantityText.text = veggie.quantity.ToString(); // update displayed quantity
-            Debug.Log(name + ": " + veggie.quantity);
+            //Debug.Log(name + ": " + veggie.quantity);
             if (veggie.quantity <= 0)
             { // if you run out of veggies
                 soldOut = true;

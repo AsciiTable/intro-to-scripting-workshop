@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Prebuilt/PrebuiltVeggieStand.unity
+    guid: 67faf0e51b83ed3438278dc07ed1573f
   m_configObjects: {}

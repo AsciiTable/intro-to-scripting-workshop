@@ -64,6 +64,6 @@ public class PrebuiltVeggie
 
     public override string ToString()
     {
-        return name +"($" + price.ToString("F2") + ") - " + quantity + " count";
+        return name +" ($" + price.ToString("F2") + ") - " + quantity;
     }
 }
